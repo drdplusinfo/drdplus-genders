@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Genders;
+namespace Drd\Genders;
 
 class MaleTest extends \PHPUnit_Framework_TestCase
 {

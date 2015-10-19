@@ -2,10 +2,10 @@
   "name": "drd-plus/properties",
   "license": "MIT",
   "type": "project",
-  "description": "Drd+ properties",
+  "description": "Genders, intentioned for Drd",
   "autoload": {
     "psr-4": {
-      "DrdPlus\\": "DrdPlus/"
+      "Drd\\": "Drd/"
     }
   },
   "require": {

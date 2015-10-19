@@ -12,14 +12,14 @@
         >
     <testsuites>
         <testsuite name="all">
-            <directory>./DrdPlus</directory>
+            <directory>./Drd</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="false">
-            <directory>./DrdPlus</directory>
+            <directory>./Drd</directory>
             <exclude>
-                <directory>./DrdPlus/Tests</directory>
+                <directory>./Drd/Tests</directory>
             </exclude>
         </whitelist>
     </filter>

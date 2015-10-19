@@ -1,9 +1,9 @@
 <?php
-namespace DrdPlus\Genders\EnumTypes;
+namespace Drd\Genders\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrineum\Scalar\EnumType;
-use DrdPlus\Genders\Gender;
+use Drd\Genders\Gender;
 
 /**
  * @method static GenderType getType(string $name),

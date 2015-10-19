@@ -1,11 +1,10 @@
 <?php
-namespace DrdPlus\Genders;
+namespace Drd\Genders;
 
 use Doctrine\DBAL\Types\Type;
-use DrdPlus\Genders\EnumTypes\GenderType;
-use DrdPlus\Tests\Genders\TestWithMockery;
+use Drd\Genders\EnumTypes\GenderType;
 
-class GenderTypeTest extends TestWithMockery
+class GenderTypeTest extends \PHPUnit_Framework_TestCase
 {
 
     /**

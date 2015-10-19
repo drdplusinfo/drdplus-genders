@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Genders;
+namespace Drd\Genders;
 
 class Female extends Gender
 {

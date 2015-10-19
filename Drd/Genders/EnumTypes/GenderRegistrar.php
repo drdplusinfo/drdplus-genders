@@ -1,8 +1,8 @@
 <?php
-namespace DrdPlus\Genders\EnumTypes;
+namespace Drd\Genders\EnumTypes;
 
-use DrdPlus\Genders\Female;
-use DrdPlus\Genders\Male;
+use Drd\Genders\Female;
+use Drd\Genders\Male;
 
 class GenderRegistrar
 {
