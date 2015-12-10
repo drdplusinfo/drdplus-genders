@@ -1,14 +1,14 @@
 <?php
 namespace Drd\Genders;
 
-use Doctrineum\Scalar\Enum;
+use Doctrineum\Scalar\ScalarEnum;
 
 /**
  * @method static Gender getEnum(string $value)
- * @see Enum::getEnum for parent
+ * @see ScalarEnum::getEnum for parent
  */
 
-abstract class Gender extends Enum implements GenderInterface
+abstract class Gender extends ScalarEnum implements GenderInterface
 {
 
 }
