@@ -6,6 +6,16 @@ use Drd\Genders\EnumTypes\GenderType;
 
 class GenderTypeTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @test
+     */
+    public function I_can_register_every_gender_at_once()
+    {
+        $this->assertTrue(GenderType::registerAll());
+        $this->assertTrue(Type::hasType(GenderType::GENDER));
+        $this->assertTrue(GenderType::hasSubTypeEnum(Male::class));
+        $this->assertTrue(GenderType::hasSubTypeEnum(Female::class));
+    }
 
     /**
      * @test

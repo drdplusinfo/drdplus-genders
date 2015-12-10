@@ -3,7 +3,9 @@ namespace Drd\Genders\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrineum\Scalar\ScalarEnumType;
+use Drd\Genders\Female;
 use Drd\Genders\Gender;
+use Drd\Genders\Male;
 
 /**
  * @method static GenderType getType(string $name),
@@ -16,6 +18,14 @@ class GenderType extends ScalarEnumType
 {
     const GENDER = 'gender';
 
+    public static function registerAll()
+    {
+        return
+            GenderType::registerSelf()
+            && GenderType::registerGenderAsSubType(Male::getIt())
+            && GenderType::registerGenderAsSubType(Female::getIt());
+    }
+
     /**
      * @param Gender $gender
      * @return bool
@@ -26,6 +36,6 @@ class GenderType extends ScalarEnumType
             return true;
         }
 
-        return static::addSubTypeEnum(get_class($gender), "~^$gender$~");
+        return static::addSubTypeEnum(get_class($gender), "~^{$gender->getValue()}$~");
     }
 }
