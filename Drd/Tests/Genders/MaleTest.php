@@ -1,25 +1,16 @@
 <?php
-namespace Drd\Genders;
+namespace Drd\Tests\Genders;
 
-class MaleTest extends \PHPUnit_Framework_TestCase
+class MaleTest extends GenderTest
 {
-    /**
-     * @test
-     */
-    public function I_can_create_male()
+    protected function shouldBeMale()
     {
-        $this->assertInstanceOf(Male::class, $male = Male::getIt());
-        $this->assertSame('male', "$male");
-        $this->assertSame(Male::MALE, "$male");
+        return true;
     }
 
-    /**
-     * @test
-     */
-    public function I_can_ask_male_for_its_gender_type()
+    protected function shouldBeFemale()
     {
-        $male = Male::getIt();
-        $this->assertFalse($male->isFemale());
-        $this->assertTrue($male->isMale());
+        return false;
     }
+
 }
