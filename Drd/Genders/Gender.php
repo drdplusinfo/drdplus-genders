@@ -43,12 +43,6 @@ abstract class Gender extends ScalarEnum implements GenderInterface
      */
     protected function getGenderCode()
     {
-        if (self::class === static::class) {
-            throw new Exceptions\CanNotUseAbstractGender(
-                'Can not give gender code for abstract gender'
-            );
-        }
-
         preg_match('~[\\\](?<basename>\w+)$~', static::class, $matches);
 
         return strtolower($matches['basename']);
