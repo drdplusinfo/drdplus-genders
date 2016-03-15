@@ -2,6 +2,7 @@
 namespace Drd\Tests\Genders;
 
 use Drd\Genders\Female;
+use Drd\Genders\Gender;
 use Drd\Genders\Male;
 
 abstract class GenderTest extends \PHPUnit_Framework_TestCase
@@ -52,4 +53,25 @@ abstract class GenderTest extends \PHPUnit_Framework_TestCase
      * @return bool
      */
     abstract protected function shouldBeFemale();
+
+    /**
+     * @test
+     * @expectedException \Drd\Genders\Exceptions\UnknownGenderCode
+     * @expectedExceptionMessageRegExp ~foo~
+     */
+    public function I_can_not_create_gender_by_invalid_code()
+    {
+        $genderClass = $this->getGenderClass();
+        $genderClass::getEnum('foo');
+    }
+
+    /**
+     * @test
+     * @expectedException \Drd\Genders\Exceptions\CanNotUseAbstractGender
+     * @expectedExceptionMessageRegExp ~foo~
+     */
+    public function I_can_not_create_abstract_gender_by_generic_factory_method()
+    {
+        Gender::getEnum('foo');
+    }
 }
