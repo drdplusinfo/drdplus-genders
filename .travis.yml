@@ -13,9 +13,9 @@ matrix:
     - php: hhvm-nightly
 
 before_script:
-  - if [[ $TRAVIS_PHP_VERSION =~ ^[0-9]+[.][0-9]+$ ]]; then phpenv config-rm xdebug.ini; fi
+#  - if [[ $TRAVIS_PHP_VERSION =~ ^[0-9]+[.][0-9]+$ ]]; then phpenv config-rm xdebug.ini; fi
   - composer self-update
   - composer update --no-interaction --prefer-dist
 
 script:
-  - ./vendor/phpunit/phpunit/phpunit -v
+  - ./vendor/phpunit/phpunit/phpunit -v --coverage-text --report-useless-tests --strict-coverage --strict-global-state --disallow-test-output --disallow-todo-tests
