@@ -16,7 +16,6 @@ abstract class GenderTest extends \PHPUnit_Framework_TestCase
         self::assertInstanceOf($genderClass, $gender);
         self::assertSame($this->getGenderCode(), $gender->getValue());
         self::assertSame($gender, $genderClass::getEnum($this->getGenderCode()));
-        self::assertSame($gender, $genderClass::getItByCode($this->getGenderCode()));
         self::assertSame($this->getGenderCode(), "$gender");
         self::assertTrue(defined("$genderClass::{$this->getGenderConstantName()}"));
         self::assertSame($this->getGenderCode(), constant("$genderClass::{$this->getGenderConstantName()}"));
