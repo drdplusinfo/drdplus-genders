@@ -4,7 +4,7 @@ namespace Drd\Genders;
 use Granam\Strict\Object\StrictObject;
 use Granam\Tools\ValueDescriber;
 
-class GenderFactory extends StrictObject
+class GendersFactory extends StrictObject
 {
     public function getGenderByCode($genderCode)
     {

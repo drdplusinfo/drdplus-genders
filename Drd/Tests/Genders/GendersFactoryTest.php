@@ -1,7 +1,11 @@
 <?php
-namespace Drd\Genders;
+namespace Drd\Tests\Genders;
 
-class GenderFactoryTest extends \PHPUnit_Framework_TestCase
+use Drd\Genders\Female;
+use Drd\Genders\GendersFactory;
+use Drd\Genders\Male;
+
+class GendersFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
@@ -12,7 +16,7 @@ class GenderFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function I_can_create_gender_by_code($genderCode, $expectedGenderClass)
     {
-        $factory = new GenderFactory();
+        $factory = new GendersFactory();
         $gender = $factory->getGenderByCode($genderCode);
         self::assertInstanceOf($expectedGenderClass, $gender);
         self::assertSame($genderCode, $gender->getValue());
@@ -34,7 +38,7 @@ class GenderFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function I_can_not_create_gender_by_invalid_code()
     {
-        $factory = new GenderFactory();
+        $factory = new GendersFactory();
         $factory->getGenderByCode('Silly Billy');
     }
 }
