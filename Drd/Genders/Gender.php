@@ -1,10 +1,10 @@
 <?php
 namespace Drd\Genders;
 
-use Doctrineum\Scalar\ScalarEnum;
+use Doctrineum\String\StringEnum;
 use Granam\Tools\ValueDescriber;
 
-abstract class Gender extends ScalarEnum implements GenderInterface
+abstract class Gender extends StringEnum implements GenderInterface
 {
     /**
      * @param string $genderCode
@@ -20,6 +20,31 @@ abstract class Gender extends ScalarEnum implements GenderInterface
         }
 
         return parent::getEnum($genderCode);
+    }
+
+    public static function getGenderByCode($genderCode)
+    {
+        $genderClass = self::getGenderClassByItsCode($genderCode);
+
+        return $genderClass::getEnum($genderCode);
+    }
+
+    /**
+     * @param string $genderCode
+     * @return string|Gender
+     * @throws \Drd\Genders\Exceptions\UnknownGenderCode
+     */
+    private static function getGenderClassByItsCode($genderCode)
+    {
+        $genderClass = __NAMESPACE__ . '\\' . ucfirst($genderCode);
+        if (!class_exists($genderClass)) {
+            throw new Exceptions\UnknownGenderCode(
+                "Was searching for class {$genderClass} determined from code "
+                . ValueDescriber::describe($genderCode)
+            );
+        }
+
+        return $genderClass;
     }
 
     public function __construct($enumValue)

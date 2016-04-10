@@ -2,7 +2,7 @@
 namespace Drd\Genders\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrineum\Scalar\ScalarEnumType;
+use Doctrineum\String\StringEnumType;
 use Drd\Genders\Female;
 use Drd\Genders\Gender;
 use Drd\Genders\Male;
@@ -14,7 +14,7 @@ use Drd\Genders\Male;
  * @method Gender convertToPHPValue(string $value, AbstractPlatform $platform)
  * @see ScalarEnumType::convertToPHPValue for parent
  */
-class GenderType extends ScalarEnumType
+class GenderType extends StringEnumType
 {
     const GENDER = 'gender';
 
