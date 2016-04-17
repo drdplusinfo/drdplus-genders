@@ -2,6 +2,7 @@
 namespace Drd\Tests\Genders;
 
 use Doctrine\DBAL\Types\Type;
+use Drd\Genders\EnumTypes\GendersEnumRegistrar;
 use Drd\Genders\EnumTypes\GenderType;
 use Drd\Genders\Female;
 use Drd\Genders\Male;
@@ -13,7 +14,7 @@ class GenderTypeTest extends \PHPUnit_Framework_TestCase
      */
     public function I_can_register_every_gender_at_once()
     {
-        self::assertTrue(GenderType::registerAll());
+        GendersEnumRegistrar::registerAll();
         self::assertTrue(Type::hasType(GenderType::GENDER));
         self::assertTrue(GenderType::hasSubTypeEnum(Male::class));
         self::assertTrue(GenderType::hasSubTypeEnum(Female::class));
@@ -31,14 +32,4 @@ class GenderTypeTest extends \PHPUnit_Framework_TestCase
         $genericGender = Type::getType(GenderType::getTypeName());
         self::assertInstanceOf(GenderType::class, $genericGender);
     }
-
-    /**
-     * @test
-     */
-    public function I_can_register_specific_gender()
-    {
-        self::assertTrue(GenderType::registerGenderAsSubType(Male::getIt()));
-        self::assertTrue(GenderType::hasSubTypeEnum(Male::class));
-    }
-
 }

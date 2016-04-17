@@ -18,19 +18,19 @@ class GenderType extends StringEnumType
 {
     const GENDER = 'gender';
 
-    public static function registerAll()
+    public static function registerGendersAsSubtypes()
     {
-        return
-            GenderType::registerSelf()
-            && GenderType::registerGenderAsSubType(Male::getIt())
-            && GenderType::registerGenderAsSubType(Female::getIt());
+        $result = GenderType::registerGenderAsSubType(Male::getIt());
+        $result |= GenderType::registerGenderAsSubType(Female::getIt());
+
+        return (bool)$result;
     }
 
     /**
      * @param Gender $gender
      * @return bool
      */
-    public static function registerGenderAsSubType(Gender $gender)
+    private static function registerGenderAsSubType(Gender $gender)
     {
         if (static::hasSubTypeEnum(get_class($gender))) {
             return true;
