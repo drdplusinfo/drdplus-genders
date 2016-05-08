@@ -33,9 +33,17 @@ class GenderType extends StringEnumType
     private static function registerGenderAsSubType(Gender $gender)
     {
         if (static::hasSubTypeEnum(get_class($gender))) {
-            return true;
+            return false;
         }
 
         return static::addSubTypeEnum(get_class($gender), "~^{$gender->getValue()}$~");
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::GENDER;
     }
 }
