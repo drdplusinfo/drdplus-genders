@@ -1,17 +1,17 @@
 <?php
-namespace Drd\Genders\EnumTypes;
+namespace DrdPlus\Genders\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrineum\String\StringEnumType;
-use Drd\Genders\Female;
-use Drd\Genders\Gender;
-use Drd\Genders\Male;
+use DrdPlus\Genders\Female;
+use DrdPlus\Genders\AbstractGender;
+use DrdPlus\Genders\Male;
 
 /**
  * @method static GenderType getType(string $name),
  * @see ScalarEnumType::getType for parent
  *
- * @method Gender convertToPHPValue(string $value, AbstractPlatform $platform)
+ * @method AbstractGender convertToPHPValue(string $value, AbstractPlatform $platform)
  * @see ScalarEnumType::convertToPHPValue for parent
  */
 class GenderType extends StringEnumType
@@ -27,10 +27,10 @@ class GenderType extends StringEnumType
     }
 
     /**
-     * @param Gender $gender
+     * @param AbstractGender $gender
      * @return bool
      */
-    private static function registerGenderAsSubType(Gender $gender)
+    private static function registerGenderAsSubType(AbstractGender $gender)
     {
         if (static::hasSubTypeEnum(get_class($gender))) {
             return false;

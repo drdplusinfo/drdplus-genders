@@ -1,5 +1,5 @@
 <?php
-namespace Drd\Tests\Genders;
+namespace DrdPlus\Tests\Genders;
 
 use Granam\Tests\Exceptions\Tools\AbstractExceptionsHierarchyTest;
 

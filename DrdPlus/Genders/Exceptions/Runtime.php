@@ -1,5 +1,5 @@
 <?php
-namespace Drd\Genders\Exceptions;
+namespace DrdPlus\Genders\Exceptions;
 
 interface Runtime extends Exception
 {

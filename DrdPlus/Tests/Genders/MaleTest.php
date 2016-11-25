@@ -1,7 +1,7 @@
 <?php
-namespace Drd\Tests\Genders;
+namespace DrdPlus\Tests\Genders;
 
-class MaleTest extends GenderTest
+class MaleTest extends AbstractGenderTest
 {
     protected function shouldBeMale()
     {

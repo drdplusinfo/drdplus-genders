@@ -1,5 +1,5 @@
 <?php
-namespace Drd\Genders\EnumTypes;
+namespace DrdPlus\Genders\EnumTypes;
 
 class GendersEnumRegistrar
 {

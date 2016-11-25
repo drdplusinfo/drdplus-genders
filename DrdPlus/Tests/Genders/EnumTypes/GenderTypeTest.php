@@ -1,12 +1,12 @@
 <?php
-namespace Drd\Tests\Genders\EnumTypes;
+namespace DrdPlus\Tests\Genders\EnumTypes;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Tests\SelfRegisteringType\AbstractSelfRegisteringTypeTest;
-use Drd\Genders\EnumTypes\GendersEnumRegistrar;
-use Drd\Genders\EnumTypes\GenderType;
-use Drd\Genders\Female;
-use Drd\Genders\Male;
+use DrdPlus\Genders\EnumTypes\GendersEnumRegistrar;
+use DrdPlus\Genders\EnumTypes\GenderType;
+use DrdPlus\Genders\Female;
+use DrdPlus\Genders\Male;
 
 class GenderTypeTest extends AbstractSelfRegisteringTypeTest
 {
