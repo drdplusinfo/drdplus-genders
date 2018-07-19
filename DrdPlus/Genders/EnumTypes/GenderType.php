@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace DrdPlus\Genders\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -16,33 +18,33 @@ use DrdPlus\Genders\Male;
  */
 class GenderType extends StringEnumType
 {
-    const GENDER = 'gender';
+    public const GENDER = 'gender';
 
     public static function registerGendersAsSubtypes()
     {
-        $result = GenderType::registerGenderAsSubType(Male::getIt());
-        $result |= GenderType::registerGenderAsSubType(Female::getIt());
+        $result = static::registerGenderAsSubType(Male::getIt());
+        $result = static::registerGenderAsSubType(Female::getIt()) | $result;
 
-        return (bool)$result;
+        return $result;
     }
 
     /**
      * @param AbstractGender $gender
      * @return bool
      */
-    private static function registerGenderAsSubType(AbstractGender $gender)
+    private static function registerGenderAsSubType(AbstractGender $gender): bool
     {
-        if (static::hasSubTypeEnum(get_class($gender))) {
+        if (static::hasSubTypeEnum(\get_class($gender))) {
             return false;
         }
 
-        return static::addSubTypeEnum(get_class($gender), "~^{$gender->getValue()}$~");
+        return static::addSubTypeEnum(\get_class($gender), "~^{$gender->getValue()}$~");
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::GENDER;
     }
