@@ -1,33 +1,26 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace DrdPlus\Genders;
 
 use DrdPlus\Codes\GenderCode;
 
+/**
+ * @method static AbstractGender|Female getEnum($genderCode)
+ */
 class Female extends AbstractGender
 {
-    /**
-     * @return Female
-     */
-    public static function getIt()
+    public static function getIt(): Female
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return self::getEnum(GenderCode::FEMALE);
     }
 
-    /**
-     * @return bool
-     */
-    public function isMale()
+    public function isMale(): bool
     {
         return false;
     }
 
-    /**
-     * @return bool
-     */
-    public function isFemale()
+    public function isFemale(): bool
     {
         return true;
     }

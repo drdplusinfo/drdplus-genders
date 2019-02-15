@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace DrdPlus\Genders;
 
@@ -7,18 +7,9 @@ use DrdPlus\Codes\GenderCode;
 
 interface Gender
 {
-    /**
-     * @return bool
-     */
-    public function isMale();
+    public function isMale(): bool;
 
-    /**
-     * @return bool
-     */
-    public function isFemale();
+    public function isFemale(): bool;
 
-    /**
-     * @return GenderCode
-     */
-    public function getCode();
+    public function getCode(): GenderCode;
 }

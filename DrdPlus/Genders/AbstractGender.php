@@ -1,23 +1,23 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace DrdPlus\Genders;
 
-use Doctrineum\Scalar\Exceptions\CanNotCreateInstanceOfAbstractEnum;
-use Doctrineum\String\StringEnum;
 use DrdPlus\Codes\GenderCode;
+use Granam\ScalarEnum\Exceptions\CanNotCreateInstanceOfAbstractEnum;
 use Granam\String\StringInterface;
+use Granam\StringEnum\StringEnum;
 use Granam\Tools\ValueDescriber;
 
 abstract class AbstractGender extends StringEnum implements Gender
 {
     /**
      * @param string|StringInterface $genderCode
-     * @return AbstractGender
+     * @return AbstractGender|\Granam\StringEnum\StringEnum
      * @throws \DrdPlus\Genders\Exceptions\CanNotUseAbstractGender
-     * @throws \Doctrineum\Scalar\Exceptions\UnexpectedValueToEnum
+     * @throws \Granam\StringEnum\Exceptions\WrongValueForStringEnum
      */
-    public static function getEnum($genderCode)
+    public static function getEnum($genderCode): AbstractGender
     {
         try {
             return parent::getEnum($genderCode);
@@ -30,7 +30,7 @@ abstract class AbstractGender extends StringEnum implements Gender
 
     /**
      * @param string|StringInterface $genderValue
-     * @throws \Doctrineum\Scalar\Exceptions\UnexpectedValueToEnum
+     * @throws \Granam\StringEnum\Exceptions\WrongValueForStringEnum
      */
     protected function __construct($genderValue)
     {
@@ -47,20 +47,14 @@ abstract class AbstractGender extends StringEnum implements Gender
         }
     }
 
-    /**
-     * @return string
-     */
-    protected function getExpectedGenderValue()
+    protected function getExpectedGenderValue(): string
     {
-        preg_match('~[\\\](?<basename>\w+)$~', static::class, $matches);
+        \preg_match('~[\\\](?<basename>\w+)$~', static::class, $matches);
 
-        return strtolower($matches['basename']);
+        return \strtolower($matches['basename']);
     }
 
-    /**
-     * @return GenderCode
-     */
-    public function getCode()
+    public function getCode(): GenderCode
     {
         return GenderCode::getIt($this->getValue());
     }
