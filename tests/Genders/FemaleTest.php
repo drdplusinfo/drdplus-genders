@@ -1,18 +1,17 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace DrdPlus\Tests\Genders;
 
-class MaleTest extends AbstractGenderTest
+class FemaleTest extends AbstractGenderTest
 {
     protected function shouldBeMale(): bool
     {
-        return true;
+        return false;
     }
 
     protected function shouldBeFemale(): bool
     {
-        return false;
+        return true;
     }
 
 }

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace DrdPlus\Tests\Genders;
 
@@ -7,7 +6,7 @@ use DrdPlus\Codes\GenderCode;
 use DrdPlus\Genders\Female;
 use DrdPlus\Genders\AbstractGender;
 use DrdPlus\Genders\Male;
-use Granam\Tests\Tools\TestWithMockery;
+use Granam\TestWithMockery\TestWithMockery;
 
 abstract class AbstractGenderTest extends TestWithMockery
 {
@@ -56,33 +55,35 @@ abstract class AbstractGenderTest extends TestWithMockery
 
     /**
      * @test
-     * @expectedException \DrdPlus\Genders\Exceptions\UnknownGenderCode
-     * @expectedExceptionMessageRegExp ~foo~
      */
     public function I_can_not_create_gender_by_invalid_code(): void
     {
         $genderClass = $this->getGenderClass();
+
+        $this->expectException(\DrdPlus\Genders\Exceptions\UnknownGenderCode::class);
+        $this->expectExceptionMessageMatches('~foo~');
         $genderClass::getEnum('foo');
     }
 
     /**
      * @test
-     * @expectedException \DrdPlus\Genders\Exceptions\CanNotUseAbstractGender
-     * @expectedExceptionMessageRegExp ~foo~
      */
     public function I_can_not_create_abstract_gender_by_generic_factory_method(): void
     {
+        $this->expectException(\DrdPlus\Genders\Exceptions\CanNotUseAbstractGender::class);
+        $this->expectExceptionMessageMatches('~foo~');
         AbstractGender::getEnum('foo');
     }
 
     /**
      * @test
-     * @expectedException \DrdPlus\Genders\Exceptions\UnknownGenderCode
-     * @expectedExceptionMessageRegExp ~Silly Billy~
      */
     public function I_can_not_create_gender_by_factory_by_invalid_code(): void
     {
         $genderClass = $this->getGenderClass();
+
+        $this->expectException(\DrdPlus\Genders\Exceptions\UnknownGenderCode::class);
+        $this->expectExceptionMessageMatches('~Silly Billy~');
         $genderClass::getEnum('Silly Billy');
     }
 }
